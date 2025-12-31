@@ -33,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
     'Christmas',
   ];
 
+  List<bool> isChecked = [false, false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,33 +44,57 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text('Joke categories:'),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[0],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[0] = value!;
+                });
+              },
               title: Text('Programming'),
             ),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[1],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[1] = value!;
+                });
+              },
               title: Text('Misc'),
             ),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[2],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[2] = value!;
+                });
+              },
               title: Text('Dark'),
             ),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[3],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[3] = value!;
+                });
+              },
               title: Text('Puns'),
             ),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[4],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[4] = value!;
+                });
+              },
               title: Text('Spooky'),
             ),
             CheckboxListTile(
-              value: false,
-              onChanged: (value) {},
+              value: isChecked[5],
+              onChanged: (value) {
+                setState(() {
+                  isChecked[5] = value!;
+                });
+              },
               title: Text('Christmas'),
             ),
             ElevatedButton(onPressed: () {}, child: Text('Get Joke')),
