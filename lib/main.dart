@@ -42,63 +42,120 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Joke categories:',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            CheckboxListTile(
-              value: isChecked[0],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[0] = value!;
-                });
-              },
-              title: Text('Programming', style: TextStyle(fontSize: 20)),
-            ),
-            CheckboxListTile(
-              value: isChecked[1],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[1] = value!;
-                });
-              },
-              title: Text('Misc', style: TextStyle(fontSize: 20)),
-            ),
-            CheckboxListTile(
-              value: isChecked[2],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[2] = value!;
-                });
-              },
-              title: Text('Dark', style: TextStyle(fontSize: 20)),
-            ),
-            CheckboxListTile(
-              value: isChecked[3],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[3] = value!;
-                });
-              },
-              title: Text('Puns', style: TextStyle(fontSize: 20)),
-            ),
-            CheckboxListTile(
-              value: isChecked[4],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[4] = value!;
-                });
-              },
-              title: Text('Spooky', style: TextStyle(fontSize: 20)),
-            ),
-            CheckboxListTile(
-              value: isChecked[5],
-              onChanged: (value) {
-                setState(() {
-                  isChecked[5] = value!;
-                });
-              },
-              title: Text('Christmas', style: TextStyle(fontSize: 20)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 14),
+                    child: Text(
+                      'Joke categories:',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[0],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[0] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Programming', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[1],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[1] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Misc', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[2],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[2] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Dark', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[3],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[3] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Puns', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[4],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[4] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Spooky', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                        child: Checkbox(
+                          value: isChecked[5],
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked[5] = value!;
+                            });
+                          },
+                        ),
+                      ),
+                      Text('Christmas', style: TextStyle(fontSize: 20)),
+                    ],
+                  ),
+                ],
+              ),
             ),
             ElevatedButton(
               onPressed: () {},
