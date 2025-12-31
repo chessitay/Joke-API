@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<bool> isCategorieChecked = [false, false, false, false, false, false];
   List<bool> isFlagChecked = [false, false, false, false, false, false];
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,221 +56,262 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 14),
-                      child: Text(
-                        'Joke categories',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Joke categories',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[0],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[0] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                'Programming',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[1],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[1] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('Misc', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[2],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[2] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('Dark', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[3],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[3] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('Puns', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[4],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[4] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('Spooky', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isCategorieChecked[5],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isCategorieChecked[5] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('Christmas', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Select flags to blacklist',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[0],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[0] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('nsfw', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[1],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[1] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('religious', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[2],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[2] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('political', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[3],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[3] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('racist', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[4],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[4] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('sexist', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isFlagChecked[5],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isFlagChecked[5] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('explicit', style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[0],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[0] = value!;
-                              });
-                            },
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Search for a joke that contains',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
-                        Text('Programming', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[1],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[1] = value!;
-                              });
-                            },
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 14,
+                              right: 14,
+                              top: 10,
+                            ),
+                            child: TextField(
+                              controller: searchController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'optional',
+                              ),
+                            ),
                           ),
-                        ),
-                        Text('Misc', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[2],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[2] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Dark', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[3],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[3] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Puns', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[4],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[4] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Spooky', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isCategorieChecked[5],
-                            onChanged: (value) {
-                              setState(() {
-                                isCategorieChecked[5] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Christmas', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 14),
-                      child: Text(
-                        'Select flags to blacklist',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[0],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[0] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('nsfw', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[1],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[1] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('religious', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[2],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[2] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('political', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[3],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[3] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('racist', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[4],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[4] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('sexist', style: TextStyle(fontSize: 20)),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: Checkbox(
-                            value: isFlagChecked[5],
-                            onChanged: (value) {
-                              setState(() {
-                                isFlagChecked[5] = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text('explicit', style: TextStyle(fontSize: 20)),
-                      ],
                     ),
                   ],
                 ),
