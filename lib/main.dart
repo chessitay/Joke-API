@@ -42,7 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Joke categories:'),
+            Text(
+              'Joke categories:',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             CheckboxListTile(
               value: isChecked[0],
               onChanged: (value) {
@@ -50,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[0] = value!;
                 });
               },
-              title: Text('Programming'),
+              title: Text('Programming', style: TextStyle(fontSize: 20)),
             ),
             CheckboxListTile(
               value: isChecked[1],
@@ -59,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[1] = value!;
                 });
               },
-              title: Text('Misc'),
+              title: Text('Misc', style: TextStyle(fontSize: 20)),
             ),
             CheckboxListTile(
               value: isChecked[2],
@@ -68,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[2] = value!;
                 });
               },
-              title: Text('Dark'),
+              title: Text('Dark', style: TextStyle(fontSize: 20)),
             ),
             CheckboxListTile(
               value: isChecked[3],
@@ -77,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[3] = value!;
                 });
               },
-              title: Text('Puns'),
+              title: Text('Puns', style: TextStyle(fontSize: 20)),
             ),
             CheckboxListTile(
               value: isChecked[4],
@@ -86,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[4] = value!;
                 });
               },
-              title: Text('Spooky'),
+              title: Text('Spooky', style: TextStyle(fontSize: 20)),
             ),
             CheckboxListTile(
               value: isChecked[5],
@@ -95,9 +98,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   isChecked[5] = value!;
                 });
               },
-              title: Text('Christmas'),
+              title: Text('Christmas', style: TextStyle(fontSize: 20)),
             ),
-            ElevatedButton(onPressed: () {}, child: Text('Get Joke')),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Get Joke',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),
