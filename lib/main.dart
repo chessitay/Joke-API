@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MainApp());
@@ -66,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> selectedTypes = [];
 
   String url = "";
+  String jokeText = "Joke will appear here";
 
   @override
   Widget build(BuildContext context) {
@@ -474,7 +477,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   setState(() {
                     selectedCategories.clear();
                     selectedFlags.clear();
@@ -561,10 +564,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     print("API URL: " + url);
                   });
+
+                  var response = await http.get(Uri.parse(url));
+                  var data = jsonDecode(response.body);
+
+                  setState(() {
+                    if (data['joke'] != null) {
+                      jokeText = data['joke'];
+                    } else {
+                      jokeText = data['setup'];
+                    }
+
+                    print("Joke: " + jokeText);
+                  });
                 },
                 child: Text(
                   'Get Joke',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  jokeText,
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ],
