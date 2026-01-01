@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<bool> isCategorieChecked = [false, false, false, false, false, false];
   List<bool> isFlagChecked = [false, false, false, false, false, false];
+  List<bool> isTypeChecked = [true, true];
   TextEditingController searchController = TextEditingController();
   TextEditingController fromIdController = TextEditingController();
   TextEditingController toIdController = TextEditingController();
@@ -354,6 +355,52 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Select at least one joke type',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isTypeChecked[0],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isTypeChecked[0] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(
+                                'single part',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 50,
+                                child: Checkbox(
+                                  value: isTypeChecked[1],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isTypeChecked[1] = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text('two parts', style: TextStyle(fontSize: 20)),
+                            ],
                           ),
                         ],
                       ),
