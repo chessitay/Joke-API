@@ -572,7 +572,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (data['joke'] != null) {
                       jokeText = data['joke'];
                     } else {
-                      jokeText = data['setup'];
+                      jokeText = data['setup'] + "\n" + data['delivery'];
                     }
 
                     print("Joke: " + jokeText);
