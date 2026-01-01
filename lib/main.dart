@@ -63,10 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController toIdController = TextEditingController();
   TextEditingController amountController = TextEditingController();
 
-  List<String> selectedCategories = [];
-  List<String> selectedFlags = [];
-  List<String> selectedTypes = [];
-
   String url = "";
   String jokeText = "Joke will appear here";
 
@@ -479,6 +475,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () async {
                   setState(() {
+                    
+                    List<String> selectedCategories = [];
+                    List<String> selectedFlags = [];
+                    List<String> selectedTypes = [];
+
                     selectedCategories.clear();
                     selectedFlags.clear();
                     selectedTypes.clear();
