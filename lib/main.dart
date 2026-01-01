@@ -61,6 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController toIdController = TextEditingController();
   TextEditingController amountController = TextEditingController();
 
+  List<String> selectedCategories = [];
+  List<String> selectedFlags = [];
+  List<String> selectedTypes = [];
+
+  String url = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -468,7 +474,94 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    selectedCategories.clear();
+                    selectedFlags.clear();
+                    selectedTypes.clear();
+
+                    for (int i = 0; i < categoryList.length; i += 2) {
+                      if (categoryList[i + 1] == true) {
+                        selectedCategories.add(categoryList[i]);
+                      }
+                    }
+
+                    for (int i = 0; i < flagList.length; i += 2) {
+                      if (flagList[i + 1] == true) {
+                        selectedFlags.add(flagList[i]);
+                      }
+                    }
+
+                    for (int i = 0; i < typeList.length; i += 2) {
+                      if (typeList[i + 1] == true) {
+                        selectedTypes.add(typeList[i]);
+                      }
+                    }
+
+                    if (selectedCategories.isEmpty) {
+                      selectedCategories.add('Any');
+                    }
+
+                    String selectedCategoriesString = selectedCategories.join(
+                      ',',
+                    );
+                    String selectedFlagsString = selectedFlags.join(',');
+                    String selectedTypesString = selectedTypes.join(',');
+
+                    url =
+                        "https://v2.jokeapi.dev/joke/" +
+                        selectedCategoriesString;
+
+                    String firstSeparator = "?";
+
+                    if (selectedFlagsString != "") {
+                      url =
+                          url +
+                          firstSeparator +
+                          "blacklistFlags=" +
+                          selectedFlagsString;
+                      firstSeparator = "&";
+                    }
+
+                    if (selectedTypes.length == 1) {
+                      url =
+                          url + firstSeparator + "type=" + selectedTypesString;
+                      firstSeparator = "&";
+                    }
+
+                    if (searchController.text != "") {
+                      url =
+                          url +
+                          firstSeparator +
+                          "contains=" +
+                          searchController.text;
+                      firstSeparator = "&";
+                    }
+
+                    if (fromIdController.text != "" &&
+                        toIdController.text != "") {
+                      url =
+                          url +
+                          firstSeparator +
+                          "idRange=" +
+                          fromIdController.text +
+                          "-" +
+                          toIdController.text;
+                      firstSeparator = "&";
+                    }
+
+                    if (amountController.text != "") {
+                      url =
+                          url +
+                          firstSeparator +
+                          "amount=" +
+                          amountController.text;
+                      firstSeparator = "&";
+                    }
+
+                    print("API URL: " + url);
+                  });
+                },
                 child: Text(
                   'Get Joke',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
