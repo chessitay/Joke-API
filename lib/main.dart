@@ -45,6 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<bool> isCategorieChecked = [false, false, false, false, false, false];
   List<bool> isFlagChecked = [false, false, false, false, false, false];
   TextEditingController searchController = TextEditingController();
+  TextEditingController fromIdController = TextEditingController();
+  TextEditingController toIdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 14),
                             child: Text(
-                              'Search for a joke that contains',
+                              'Search for a joke that contains (optional)',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -308,6 +310,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                 border: OutlineInputBorder(),
                                 hintText: 'optional',
                               ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Search for a joke in this ID range (optional)',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 14,
+                              right: 14,
+                              top: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    controller: fromIdController,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'from',
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: TextField(
+                                    controller: toIdController,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'to',
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
