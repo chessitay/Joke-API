@@ -572,12 +572,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     if (amountController.text != "" && amountController.text != "1") {
                       jokeText = "";
+                      int i = 1;
                       for (var u in data['jokes']) {
                         if (u['type'] == 'single') {
-                          jokeText += u['joke'] + "\n\n";
+                          jokeText += "$i. " + u['joke'] + "\n\n";
                         } else {
-                          jokeText += u['setup'] + "\n" + u['delivery'] + "\n\n";
+                          jokeText += "$i. " + u['setup'] + "\n" + u['delivery'] + "\n\n";
                         }
+                        i++;
                       }
                     } else {
                       if (data['joke'] != null) {
