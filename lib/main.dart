@@ -48,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
   TextEditingController fromIdController = TextEditingController();
   TextEditingController toIdController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -401,6 +402,35 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text('two parts', style: TextStyle(fontSize: 20)),
                             ],
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 14),
+                            child: Text(
+                              'Amount of jokes',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 14,
+                              right: 14,
+                              top: 10,
+                            ),
+                            child: SizedBox(
+                              width: 60,
+                              child: TextField(
+                                controller: amountController,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: '1',
+                                ),
+                                keyboardType: TextInputType.number,
+                              ),
+                            ),
                           ),
                         ],
                       ),
