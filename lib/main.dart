@@ -24,27 +24,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> categories = [
+  List categoryList = [
     'Programming',
+    false,
     'Misc',
+    false,
     'Dark',
+    false,
     'Puns',
+    false,
     'Spooky',
+    false,
     'Christmas',
+    false,
   ];
 
-  final List<String> flags = [
+  List flagList = [
     'nsfw',
+    false,
     'religious',
+    false,
     'political',
+    false,
     'racist',
+    false,
     'sexist',
+    false,
     'explicit',
+    false,
   ];
 
-  List<bool> isCategorieChecked = [false, false, false, false, false, false];
-  List<bool> isFlagChecked = [false, false, false, false, false, false];
-  List<bool> isTypeChecked = [true, true];
+  List typeList = ['single', true, 'twopart', true];
+
   TextEditingController searchController = TextEditingController();
   TextEditingController fromIdController = TextEditingController();
   TextEditingController toIdController = TextEditingController();
@@ -82,16 +93,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[0],
+                                  value: categoryList[1],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[0] = value!;
+                                      categoryList[1] = value!;
                                     });
                                   },
                                 ),
                               ),
                               Text(
-                                'Programming',
+                                categoryList[0],
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -101,15 +112,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[1],
+                                  value: categoryList[3],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[1] = value!;
+                                      categoryList[3] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('Misc', style: TextStyle(fontSize: 20)),
+                              Text(
+                                categoryList[2],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                           Row(
@@ -117,15 +131,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[2],
+                                  value: categoryList[5],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[2] = value!;
+                                      categoryList[5] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('Dark', style: TextStyle(fontSize: 20)),
+                              Text(
+                                categoryList[4],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                           Row(
@@ -133,15 +150,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[3],
+                                  value: categoryList[7],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[3] = value!;
+                                      categoryList[7] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('Puns', style: TextStyle(fontSize: 20)),
+                              Text(
+                                categoryList[6],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                           Row(
@@ -149,15 +169,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[4],
+                                  value: categoryList[9],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[4] = value!;
+                                      categoryList[9] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('Spooky', style: TextStyle(fontSize: 20)),
+                              Text(
+                                categoryList[8],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                           Row(
@@ -165,17 +188,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isCategorieChecked[5],
+                                  value: categoryList[11],
                                   onChanged: (value) {
                                     setState(() {
-                                      isCategorieChecked[5] = value!;
+                                      categoryList[11] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('Christmas', style: TextStyle(fontSize: 20)),
+                              Text(
+                                categoryList[10],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
+
                           SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.only(left: 14),
@@ -192,15 +219,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[0],
+                                  value: flagList[1],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[0] = value!;
+                                      flagList[1] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('nsfw', style: TextStyle(fontSize: 20)),
+                              Text(flagList[0], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -208,15 +235,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[1],
+                                  value: flagList[3],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[1] = value!;
+                                      flagList[3] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('religious', style: TextStyle(fontSize: 20)),
+                              Text(flagList[2], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -224,15 +251,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[2],
+                                  value: flagList[5],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[2] = value!;
+                                      flagList[5] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('political', style: TextStyle(fontSize: 20)),
+                              Text(flagList[4], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -240,15 +267,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[3],
+                                  value: flagList[7],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[3] = value!;
+                                      flagList[7] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('racist', style: TextStyle(fontSize: 20)),
+                              Text(flagList[6], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -256,15 +283,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[4],
+                                  value: flagList[9],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[4] = value!;
+                                      flagList[9] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('sexist', style: TextStyle(fontSize: 20)),
+                              Text(flagList[8], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -272,15 +299,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isFlagChecked[5],
+                                  value: flagList[11],
                                   onChanged: (value) {
                                     setState(() {
-                                      isFlagChecked[5] = value!;
+                                      flagList[11] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('explicit', style: TextStyle(fontSize: 20)),
+                              Text(
+                                flagList[10],
+                                style: TextStyle(fontSize: 20),
+                              ),
                             ],
                           ),
                         ],
@@ -338,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     controller: fromIdController,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
-                                      hintText: 'from',
+                                      hintText: 'from: 0',
                                     ),
                                     keyboardType: TextInputType.number,
                                   ),
@@ -349,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     controller: toIdController,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
-                                      hintText: 'to',
+                                      hintText: 'to: 1367',
                                     ),
                                     keyboardType: TextInputType.number,
                                   ),
@@ -373,18 +403,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isTypeChecked[0],
+                                  value: typeList[1],
                                   onChanged: (value) {
                                     setState(() {
-                                      isTypeChecked[0] = value!;
+                                      typeList[1] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text(
-                                'single part',
-                                style: TextStyle(fontSize: 20),
-                              ),
+                              Text(typeList[0], style: TextStyle(fontSize: 20)),
                             ],
                           ),
                           Row(
@@ -392,17 +419,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 50,
                                 child: Checkbox(
-                                  value: isTypeChecked[1],
+                                  value: typeList[3],
                                   onChanged: (value) {
                                     setState(() {
-                                      isTypeChecked[1] = value!;
+                                      typeList[3] = value!;
                                     });
                                   },
                                 ),
                               ),
-                              Text('two parts', style: TextStyle(fontSize: 20)),
+                              Text(typeList[2], style: TextStyle(fontSize: 20)),
                             ],
                           ),
+
                           SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.only(left: 14),
