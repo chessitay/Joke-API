@@ -570,10 +570,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   var data = jsonDecode(response.body);
 
                   setState(() {
-                    if (data['joke'] != null) {
-                      jokeText = data['joke'];
+                    if (amountController.text != "" && amountController.text != "1") {
+                      jokeText = "";
+                      for (var u in data['jokes']) {
+                        if (u['type'] == 'single') {
+                          jokeText += u['joke'] + "\n\n";
+                        } else {
+                          jokeText += u['setup'] + "\n" + u['delivery'] + "\n\n";
+                        }
+                      }
                     } else {
-                      jokeText = data['setup'] + "\n" + data['delivery'];
+                      if (data['joke'] != null) {
+                        jokeText = data['joke'];
+                      } else {
+                        jokeText = data['setup'] + "\n" + data['delivery'];
+                      }
                     }
 
                     print("Joke: " + jokeText);
