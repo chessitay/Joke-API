@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:dropdown_search/dropdown_search.dart';
 
 void main() {
   runApp(const MainApp());
@@ -219,104 +220,44 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[1],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[1] = value!;
-                                    });
-                                  },
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                            child: DropdownSearch<String>.multiSelection(
+                              items: (filter, loadProps) async {
+                                List<String> items = [];
+                                for (int i = 0; i < flagList.length; i++) {
+                                  if (flagList[i] is String) {
+                                    items.add(flagList[i]);
+                                  }
+                                }
+                                return items;
+                              },
+                              popupProps: PopupPropsMultiSelection.bottomSheet(
+                                bottomSheetProps: BottomSheetProps(
+                                  backgroundColor: Colors.blueGrey[50],
                                 ),
+                                showSearchBox: true,
+                                showSelectedItems: true,
                               ),
-                              Text(flagList[0], style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[3],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[3] = value!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Text(flagList[2], style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[5],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[5] = value!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Text(flagList[4], style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[7],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[7] = value!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Text(flagList[6], style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[9],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[9] = value!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Text(flagList[8], style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 50,
-                                child: Checkbox(
-                                  value: flagList[11],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      flagList[11] = value!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Text(
-                                flagList[10],
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
+                              onChanged: (data) {
+                                setState(() {
+                                  for (int i = 0; i < flagList.length; i++) {
+                                    if (flagList[i] is bool) {flagList[i] = false;}
+                                  }
+                                  for (int k = 0; k < data.length; k++) {
+                                    for (int j = 0; j < flagList.length; j++) {
+                                      if (flagList[j] == data[k]) {
+                                        flagList[j + 1] = true;
+                                      }
+                                    }
+                                  }
+                                });
+                              },
+                              selectedItems: [
+                                for (int i = 0; i < flagList.length; i++)
+                                  if (flagList[i] is String && flagList[i + 1] == true) flagList[i]
+                              ],
+                            ),
                           ),
                         ],
                       ),
