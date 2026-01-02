@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 void main() {
   runApp(const MainApp());
@@ -414,6 +413,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
+                  final bool isConnected = await InternetConnectionChecker.instance.hasConnection;
+                  if (isConnected) {
+                    print('Device is connected to the internet');
+                  } else {
+                    print('Device is not connected to the internet');
+                    setState(() {
+                      jokeText = 'Device is not connected to the internet';
+                    });
+                    return;
+                  }
+
                   setState(() {
                     
                     List<String> selectedCategories = [];
