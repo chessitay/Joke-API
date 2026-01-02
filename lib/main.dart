@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -60,8 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List typeList = ['single', true, 'twopart', true];
 
   TextEditingController searchController = TextEditingController();
-  TextEditingController fromIdController = TextEditingController();
-  TextEditingController toIdController = TextEditingController();
+  RangeValues idRange = const RangeValues(0, 318);
   TextEditingController amountController = TextEditingController();
 
   String url = "";
@@ -307,28 +308,26 @@ class _HomeScreenState extends State<HomeScreen> {
                               right: 14,
                               top: 10,
                             ),
-                            child: Row(
+                            child: Column(
                               children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: fromIdController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      hintText: 'from: 0',
-                                    ),
-                                    keyboardType: TextInputType.number,
+                                RangeSlider(
+                                  values: idRange,
+                                  min: 0,
+                                  max: 318,
+                                  divisions: 318,
+                                  labels: RangeLabels(
+                                    idRange.start.round().toString(),
+                                    idRange.end.round().toString(),
                                   ),
+                                  onChanged: (RangeValues values) {
+                                    setState(() {
+                                      idRange = values;
+                                    });
+                                  },
                                 ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: TextField(
-                                    controller: toIdController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      hintText: 'to: 1367',
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                  ),
+                                Text(
+                                  "Range: ${idRange.start.round()} - ${idRange.end.round()}",
+                                  style: TextStyle(fontSize: 16),
                                 ),
                               ],
                             ),
@@ -472,9 +471,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       firstSeparator = "&";
                     }
 
-                    if (fromIdController.text != "" &&
-                        toIdController.text != "") {
-                      url = url + firstSeparator + "idRange=" + fromIdController.text + "-" + toIdController.text;
+                    if (idRange.start.round() != 0 ||
+                        idRange.end.round() != 318) {
+                      url = url + firstSeparator + "idRange=" + idRange.start.round().toString() + "-" + idRange.end.round().toString();
                       firstSeparator = "&";
                     }
 
