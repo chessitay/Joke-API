@@ -512,54 +512,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     String selectedFlagsString = selectedFlags.join(',');
                     String selectedTypesString = selectedTypes.join(',');
 
-                    url =
-                        "https://v2.jokeapi.dev/joke/" +
-                        selectedCategoriesString;
+                    url = "https://v2.jokeapi.dev/joke/" + selectedCategoriesString;
 
                     String firstSeparator = "?";
 
                     if (selectedFlagsString != "") {
-                      url =
-                          url +
-                          firstSeparator +
-                          "blacklistFlags=" +
-                          selectedFlagsString;
+                      url = url + firstSeparator + "blacklistFlags=" + selectedFlagsString;
                       firstSeparator = "&";
                     }
 
                     if (selectedTypes.length == 1) {
-                      url =
-                          url + firstSeparator + "type=" + selectedTypesString;
+                      url = url + firstSeparator + "type=" + selectedTypesString;
                       firstSeparator = "&";
                     }
 
                     if (searchController.text != "") {
-                      url =
-                          url +
-                          firstSeparator +
-                          "contains=" +
-                          searchController.text;
+                      url = url + firstSeparator + "contains=" + searchController.text;
                       firstSeparator = "&";
                     }
 
                     if (fromIdController.text != "" &&
                         toIdController.text != "") {
-                      url =
-                          url +
-                          firstSeparator +
-                          "idRange=" +
-                          fromIdController.text +
-                          "-" +
-                          toIdController.text;
+                      url = url + firstSeparator + "idRange=" + fromIdController.text + "-" + toIdController.text;
                       firstSeparator = "&";
                     }
 
                     if (amountController.text != "") {
-                      url =
-                          url +
-                          firstSeparator +
-                          "amount=" +
-                          amountController.text;
+                      url = url + firstSeparator + "amount=" + amountController.text;
                       firstSeparator = "&";
                     }
 
